@@ -122,6 +122,21 @@ ALTER TABLE weather_forecast MODIFY  expected_wind_speed DECIMAL(5,2);
 -- Rename 2 columns
 ALTER TABLE weather_forecast RENAME COLUMN city_name TO location_name, RENAME COLUMN forecast_time TO generated_at;
 
+INSERT INTO weather_forecast VALUES (303, 'Chennai', '2024-10-10', 32.50, 'Sunny', 14.50, '2024-10-09 18:00:00', 'Extreme Heat', 65, 8.50);
+ 
+INSERT INTO weather_forecast VALUES(304, 'Mysuru', '2024-10-10', 22.50, 'Cloudy', 10.00,  '2024-10-09 18:15:00', 'Dense Fog', 78, 5.00),
+(305, 'Hyderabad', '2024-10-10', 29.00, 'Rainy', 22.50, '2024-10-09 18:30:00', 'Heavy Rain,High Wind', 82, 4.50);
+
+INSERT INTO weather_forecast (forecast_id, location_name, forecast_date, expected_temperature,
+ weather_condition, alerts) VALUES (306, 'Pune', '2024-10-10', 25.50, 'Rainy', 'Heavy Rain');
+
+INSERT INTO weather_forecast (forecast_id, location_name, forecast_date, expected_temperature,weather_condition, alerts)
+VALUES (307, 'Kochi', '2024-10-10', 27.00, 'Stormy', 'High Wind,Heavy Rain'),
+(308, 'Delhi', '2024-10-10', 33.50, 'Sunny', 'Extreme Heat');
+
+
+SELECT * FROM weather_forecast;
+
 
 
 CREATE TABLE weather_alert ( alert_id INT,city_name VARCHAR(50),alert_type ENUM('Flood', 'Storm', 'Heat Wave', 'Heavy Rain', 'Strong Wind'),alert_level ENUM('Low', 'Medium', 'High', 'Critical'),
@@ -131,3 +146,31 @@ INSERT INTO weather_alert VALUES (401, 'Bengaluru', 'Heavy Rain', 'High','Heavy 
 
 INSERT INTO weather_alerts VALUES (402, 'Hyderabad', 'Strong Wind', 'Medium','Strong winds expected during evening','2024-10-08', '2024-10-08 16:00:00', TRUE);
 
+-- Add 3 columns
+ALTER TABLE weather_alert ADD  affected_area VARCHAR(80), ADD  estimated_duration_hours INT, ADD  alert_source VARCHAR(40);
+
+-- Drop 1 column
+ALTER TABLE weather_alert
+DROP  alert_source;
+
+-- Modify 1 column
+ALTER TABLE weather_alert MODIFY  message VARCHAR(250);
+
+-- Rename 2 columns
+ALTER TABLE weather_alert RENAME COLUMN issued_date TO alert_date,RENAME COLUMN issued_at TO issued_timestamp;
+
+
+INSERT INTO weather_alert VALUES(403, 'Chennai', 'Heat Wave', 'High', 'Extreme temperatures expected during the afternoon', '2024-10-09', '2024-10-09 10:00:00', TRUE, 'Central Chennai', 5);
+
+INSERT INTO weather_alert VALUES (404, 'Mysuru', 'Strong Wind', 'Medium','Strong winds expected in open areas','2024-10-09', '2024-10-09 11:00:00', true,'Northern Mysuru', 3), 
+(405, 'Delhi', 'Heavy Rain', 'Critical','Heavy rainfall may cause waterlogging','2024-10-09', '2024-10-09 12:00:00', true,'Central Delhi', 6);
+
+
+INSERT INTO weather_alert (alert_id, city_name, alert_type, alert_level, message)
+VALUES(406, 'Pune', 'Storm', 'High','Thunderstorms expected in the evening');
+
+INSERT INTO weather_alert (alert_id, city_name, alert_type, alert_level, message)
+VALUES(407, 'Kochi', 'Flood', 'Critical','Flooding possible in low-lying areas'),
+(408, 'Hyderabad', 'Strong Wind', 'Low','Mild winds expected during the evening');
+
+SELECT * FROM weather_alert;
