@@ -144,7 +144,7 @@ CREATE TABLE weather_alert ( alert_id INT,city_name VARCHAR(50),alert_type ENUM(
     
 INSERT INTO weather_alert VALUES (401, 'Bengaluru', 'Heavy Rain', 'High','Heavy rain expected in the next few hours','2024-10-08', '2024-10-08 15:30:00', TRUE);
 
-INSERT INTO weather_alerts VALUES (402, 'Hyderabad', 'Strong Wind', 'Medium','Strong winds expected during evening','2024-10-08', '2024-10-08 16:00:00', TRUE);
+INSERT INTO weather_alert VALUES (402, 'Hyderabad', 'Strong Wind', 'Medium','Strong winds expected during evening','2024-10-08', '2024-10-08 16:00:00', TRUE);
 
 -- Add 3 columns
 ALTER TABLE weather_alert ADD  affected_area VARCHAR(80), ADD  estimated_duration_hours INT, ADD  alert_source VARCHAR(40);
