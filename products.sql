@@ -4,7 +4,6 @@ use e_commerce;
 
 create table products(product_id int, name varchar(50),model_id int, price double,brand varchar(50),category enum("Electronics","Appliances","Accessories"), manufacture_date date, is_available boolean, features set('Wireless', 'Bluetooth', 'Waterproof', 'Touchscreen') )
 
-
 INSERT INTO products (product_id, name, model_id, price, brand,category, manufacture_date, is_available, features)
 VALUES (1, 'mobile',3567 , 25000.00, 'Samsung','Electronics', '2026-10-07', true,'Touchscreen,Bluetooth' );
 
@@ -28,9 +27,29 @@ INSERT INTO products (product_id, product_name, price, brand_name) VALUES(10, 'T
 INSERT INTO products(product_id, product_name, price, brand_name)VALUES(12, 'Monitor', 18000.00, 'Dell');
 INSERT INTO products(product_id, product_name, price, brand_name)VALUES(13, 'Speaker', 5999.99, 'JBL');
 
-select * from products;
+INSERT INTO products VALUES (14, 'Mobile', 33, 40000.00, 'OPPO', 'Electronics','2026-10-13', 1, 'Touchscreen', 10, 2);
 
+SELECT * FROM products;
 
+-- DQL Operations (SELECT)
+-- order of execution 
+-- 1. from is executed first 2.conditions(where) 3.select 
+
+SELECT * FROM products WHERE product_id > 5;
+
+SELECT * FROM products WHERE price < 50000.00;
+
+SELECT * FROM products WHERE is_available = 0;
+
+SELECT * FROM products WHERE category != 'Electronics';
+
+SELECT * FROM products WHERE warranty_years >= 2.0;
+
+SELECT * FROM products WHERE stock <= 15;
+ 
+
+ 
+ 
 
 create table customers (customer_id int,name varchar(50),gender char(1),email varchar(100),phone bigint,date_of_birth DATE,registration_time datetime,is_active boolean);
 
