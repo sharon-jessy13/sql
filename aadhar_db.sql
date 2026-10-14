@@ -22,13 +22,17 @@ INSERT INTO aadhar_details VALUES (987654321012, 'SHARON', 21, '9870123456', 'sh
 INSERT INTO aadhar_details(id, name, age, phone_number, email) 
 VALUES (987654321013, 'JESSY', 18, '1234567890', 'jessy@gmail.com');
     
-    
+-- by default autocommit is true , so we need to change it for 0 for making changes 
 SET autocommit = 0;
+
 
 INSERT INTO aadhar_details VALUES (987654321055, 'SHARON JESSY', 21, '1234578960', 'sharonjessy@gmail.com', 'India');
 
+
+-- after the autocommit = 0 , the changes we made is not saved in db , so if we dont want to save permanently then use rollback 
 rollback;
 
+-- after the autocommit = 0 , the changes we made is not saved in db , so if we need to save permanently then use commit 
 commit;
 
 SELECT * FROM aadhar_details;
@@ -45,6 +49,7 @@ SELECT * FROM adress_details;
 
 
 -- TCL - transaction control language 
+
 -- commit -- permanent save in db 
 
 -- rollback  -- after doing change , dont want to save permanently in db
