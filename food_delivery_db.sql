@@ -26,9 +26,9 @@ INSERT INTO Customers VALUES (3, 'Akhil', '9876500004', 'Chennai');
 
 INSERT INTO Customers VALUES (4, 'Sneha', '9876500005', 'Hyderabad');
 
-UPDATE Customers SET address = 'Pune' WHERE customer_id = 1;
+UPDATE Customers SET address = 'Pune' WHERE id = 1;
 
-DELETE FROM Customers WHERE customer_id = 3;
+DELETE FROM Customers WHERE id = 3;
 
 rollback;
 
@@ -60,9 +60,9 @@ INSERT INTO Restaurants VALUES (103, 'Dosa Corner', 'Zomato', 'Bengaluru');
 
 INSERT INTO Restaurants VALUES (104, 'Food Palace', 'Swiggy', 'Mysuru');
 
-UPDATE Restaurants SET location = 'Hubli' WHERE restaurant_id = 102;
+UPDATE Restaurants SET location = 'Hubli' WHERE id = 102;
 
-DELETE FROM Restaurants WHERE restaurant_id = 103;
+DELETE FROM Restaurants WHERE id = 103;
 
 ROLLBACK;
 
