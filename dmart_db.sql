@@ -93,6 +93,18 @@ SELECT name customer_name FROM customer_info;
 SELECT email AS email_address FROM customer_info;
 SELECT email email_address FROM customer_info;
 
+-- HAVING is  used for condition after the group by
+SELECT city, COUNT(city) FROM customer_info group by city;
+SELECT city, COUNT(city) FROM customer_info group by city HAVING COUNT(city) = 1;
+
+SELECT city, COUNT(city) FROM customer_info group by city HAVING COUNT(city) > 2;
+SELECT city, COUNT(city) FROM customer_info group by city HAVING COUNT(city) = 2;
+
+SELECT name FROM customer_info order by name asc;
+SELECT name FROM customer_info ORDER BY name DESC;
+
+SELECT * FROM customer_info ORDER BY age asc;
+SELECT * FROM customer_info ORDER BY age DESC;
 
 
 CREATE TABLE product_info (id INT PRIMARY KEY, product_name VARCHAR(50), price DOUBLE, quantity INT, manf_date DATE, exp_date DATE);
@@ -181,3 +193,17 @@ SELECT manf_date AS manufacture_date FROM product_info;
 
 SELECT DISTINCT manf_date FROM product_info;
 SELECT DISTINCT product_name FROM product_info;
+
+
+-- FUNCTIONS - it gives single value (row) as output by taking multiple rows as input
+SELECT COUNT(*) FROM product_info;
+
+SELECT SUM(price) total_price FROM product_info;
+
+SELECT MAX(price) AS max_price FROM product_info;
+
+SELECT MIN(quantity) min_quantity FROM product_info;
+
+SELECT AVG(quantity) avg_quantity FROM product_info;
+
+SELECT * FROM product_info ORDER BY manf_date asc;
